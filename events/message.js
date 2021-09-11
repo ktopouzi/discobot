@@ -1,17 +1,21 @@
-const kick = require("../commands/kick");
-const play = require("../commands/play");
-const { prefix } = require('../config.json');
+require('dotenv').config();
+const kick = require('../commands/kick');
+const play = require('../commands/play');
+const prefix = process.env.PREFIX;
 
-module.exports = (client, message) => {
+module.exports = {
+  name: 'message',
+  execute(message) {
     if (message.content === `${prefix}salute`) {
-        message.channel.send('Hello there!');
+      message.channel.send('Hello there!');
     }
 
     if (message.content.startsWith(`${prefix}play`)) {
-        return play(message);
+      return play(message);
     }
 
     if (message.content.startsWith(`${prefix}kick`)) {
-        return kick(message);
+      return kick(message);
     }
-}
+  },
+};
