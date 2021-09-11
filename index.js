@@ -1,17 +1,20 @@
+require('dotenv').config();
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
 const fs = require('fs');
-const { token } = require('./config.json');
+const token = process.env.TOKEN;
 
-fs.readdir("./events/", (err, files) => {
-    files.forEach(file => {
-        // Runs each time the corresponding event is emitted
-        const eventHandler = require(`./events/${file}`);
-        const eventName = file.split(".")[0];
-        // Using 'rest parameter' syntax, which allows us to represent an indefinite number of arguments as an array
-        client.on(eventName, (...args) => eventHandler(client, ...args));
-    })
-});
+const eventFiles = fs
+  .readdirSync('./events')
+  .filter((file) => file.endsWith('.js'));
 
+for (const file of eventFiles) {
+  const event = require(`./events/${file}`);
+  if (event.once) {
+    client.once(event.name, (...args) => event.execute(...args));
+  } else {
+    client.on(event.name, (...args) => event.execute(...args));
+  }
+}
 client.login(token);
