@@ -20,12 +20,11 @@
   "homepage": "https://github.com/ktopouzi/discobot#readme",
   "dependencies": {
     "@discordjs/opus": "^0.6.0",
-    "@discordjs/rest": "0.1.0-canary.0",
-    "discord-api-types": "^0.23.1",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
     "eslint": "^6.8.0",
-    "ytdl-core": "^2.1.7"
+    "ffmpeg-static": "^4.4.0",
+    "ytdl-core": "^4.9.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
