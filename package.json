@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/ktopouzi/discobot#readme",
   "dependencies": {
-    "@discordjs/opus": "^0.6.0",
+    "@discordjs/opus": "^0.8.0",
     "@prisma/client": "^3.0.2",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
